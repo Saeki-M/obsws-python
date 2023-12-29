@@ -40,7 +40,7 @@ EXTRAS_REQUIRE = {
 }
 
 # Python version requirement
-PYTHON_REQUIRES = ">=3.9"
+PYTHON_REQUIRES = ">=3.8"
 
 setup(
     name=PACKAGE_NAME,

@@ -25,8 +25,8 @@ class ObsClient:
             "timeout": None,
         }
         if not any(key in kwargs for key in ("host", "port", "password")):
-            kwargs |= self._conn_from_toml()
-        kwargs = defaultkwargs | kwargs
+            kwargs = {**kwargs, **self._conn_from_toml()}
+        kwargs = {**defaultkwargs, **kwargs}
         for attr, val in kwargs.items():
             setattr(self, attr, val)
 
