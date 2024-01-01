@@ -3,6 +3,8 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 
+A fork that lowers python requirement to 3.8
+
 # A Python SDK for OBS Studio WebSocket v5.0
 
 Not all endpoints in the official documentation are implemented.
@@ -12,7 +14,7 @@ Not all endpoints in the official documentation are implemented.
 - [OBS Studio](https://obsproject.com/)
 - [OBS Websocket v5 Plugin](https://github.com/obsproject/obs-websocket/releases/tag/5.0.0)
   - With the release of OBS Studio version 28, Websocket plugin is included by default. But it should be manually installed for earlier versions of OBS.
-- Python 3.9 or greater
+- Python 3.8 or greater
 
 ### How to install using pip
 
