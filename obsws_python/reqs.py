@@ -34,27 +34,24 @@ class ReqClient:
         self.base_client.ws.close()
 
     def __repr__(self):
-        return type(
-            self
-        ).__name__ + "(host='{host}', port={port}, password='{password}', timeout={timeout})".format(
-            **self.base_client.__dict__,
+        return (
+            type(self).__name__
+            + "(host='{host}', port={port}, password='{password}', timeout={timeout})".format(
+                **self.base_client.__dict__,
+            )
         )
 
     def __str__(self):
         return type(self).__name__
 
     def send(self, param, data=None, raw=False):
-        try:
-            response = self.base_client.req(param, data)
-            if not response["requestStatus"]["result"]:
-                raise OBSSDKRequestError(
-                    response["requestType"],
-                    response["requestStatus"]["code"],
-                    response["requestStatus"].get("comment"),
-                )
-        except OBSSDKRequestError as e:
-            self.logger.exception(f"{type(e).__name__}: {e}")
-            raise
+        response = self.base_client.req(param, data)
+        if not response["requestStatus"]["result"]:
+            raise OBSSDKRequestError(
+                response["requestType"],
+                response["requestStatus"]["code"],
+                response["requestStatus"].get("comment"),
+            )
         if "responseData" in response:
             if raw:
                 return response["responseData"]
@@ -435,7 +432,7 @@ class ReqClient:
 
     def set_record_directory(self, recordDirectory):
         """
-        Sets the current directory that the record output writes files to. 
+        Sets the current directory that the record output writes files to.
         IMPORTANT NOTE: Requires obs websocket v5.3 or higher.
 
         :param recordDirectory: Output directory
@@ -445,7 +442,7 @@ class ReqClient:
             "recordDirectory": recordDirectory,
         }
         return self.send("SetRecordDirectory", payload)
-    
+
     def get_source_active(self, name):
         """
         Gets the active and show state of a source
